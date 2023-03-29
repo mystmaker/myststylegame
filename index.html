@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>
+Escape the room    
+</title>   
+</head>
+
+<body>
+<script>
+var step1 = false;
+var step2 = false;
+var step3 = false;
+var step4 = false;   
+    
+    function gametoggle2(){
+        
+        if (step1 && step2 && step3 && step4 == false)
+     {
+         document.getElementById("console").innerHTML = "You can't see anything";
+     }
+        
+        else
+        {
+            document.getElementById("console").innerHTML = "quit clicking around";
+        }
+        
+    }
+    
+    function gametoggle(){ //turning on the lights
+  
+     document.getElementById("main").src="image2.jpg"
+     step1 = true; //this lets the program know that the lights are on. This condition is now true.
+     
+ }
+    
+    function gametoggle3(){
+    
+        if (step1 == true){ //You can take the key only when the lights are on
+    document.getElementById("main").src="image3.jpg"
+    document.getElementById("console").innerHTML = "You now have the key";
+    step2 = true;
+        }
+        
+        else
+        {
+            document.getElementById("console").innerHTML = "quit clicking around";
+        }
+    
+    
+    }
+    
+    function gametoggle4(){
+        if (step1 && step2 && step3 == true){ //If the light is on, and if you got the key, and if you oppened the door, you exit
+        document.getElementById("main").src="image5.jpg"
+        document.getElementById("console").innerHTML="Your journey has just begun";
+    }
+        
+        else if (step1 && step2 == true)
+        {
+            document.getElementById("main").src="image4.jpg"
+        step3 = true;
+        }
+        
+        else
+        {
+            document.getElementById("console").innerHTML = "quit clicking around";
+        }
+    }
+    
+    
+</script>
+<table border="1" width=50%>
+    <tr>
+    <td><img src="image1.jpg" usemap="#gamemap" id="main" onclick="gametoggle2()"></td>    
+    </tr>
+    <tr>
+    <td id="console"></td>
+    </tr>
+    
+    
+    
+<map name="gamemap">
+    
+<area shape="rect"
+coords="920,60,960,180"
+onClick=gametoggle()>
+    
+<area shape="rect"
+coords="820,440,851,455"
+onclick="gametoggle3()">
+    
+<area shape="rect"
+coords="300,60,600,550"
+onclick="gametoggle4()">
+    
+
+</map>
+  
+    </body>
+</html>
